@@ -1,0 +1,769 @@
+Instructions:
+
+Install the required modules (and their dependencies): 
+    - charts_highcharts_maps
+    - views_csv_source
+    - views_field_view_ll
+
+Navigate to https://data.cityofchicago.org/Public-Safety/Crimes-2025/t7ek-mgzi/about_data,
+and click the "Export" button. Save your file in sites/default/files as chicago-crime-statistics.csv
+
+Navigate to /admin/config/development/configuration/single/import, select "View" in the dropdown,
+and the paste the contents below and click "Import".
+
+Navigate to /chicago-crime-small-multiples to see your view (the initial load will be slow).
+
+#########
+
+langcode: en
+status: true
+dependencies:
+  module:
+    - charts_highcharts_maps
+    - views_csv_source
+    - views_field_view_ll
+id: chicago_crimes
+label: 'Chicago Crimes'
+module: views
+description: ''
+tag: ''
+base_table: csv
+base_field: ''
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Chicago Crimes'
+      fields:
+        value:
+          id: value
+          table: csv
+          field: value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: views_csv_source_field
+          label: 'Case Number'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          key: 'Case Number'
+          trusted_html: false
+        value_1:
+          id: value_1
+          table: csv
+          field: value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_csv_source_field
+          label: 'X Coordinate'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          key: 'X Coordinate'
+          trusted_html: false
+        value_2:
+          id: value_2
+          table: csv
+          field: value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_csv_source_field
+          label: 'Y Coordiante'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          key: 'Y Coordinate'
+          trusted_html: false
+        value_3:
+          id: value_3
+          table: csv
+          field: value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_csv_source_field
+          label: Ward
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ value_3.__toString }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          key: Ward
+          trusted_html: false
+      pager:
+        type: mini
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 100
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts: {  }
+      arguments: {  }
+      filters: {  }
+      filter_groups:
+        operator: AND
+        groups: {  }
+      style:
+        type: chart_highmap
+        options:
+          grouping: {  }
+          chart_settings:
+            library: highmap
+            type: map
+            fields:
+              label: value
+              stacking: false
+              data_providers:
+                value:
+                  enabled: false
+                  color: '#006fb0'
+                  weight: 3
+                value_1:
+                  enabled: false
+                  color: '#f07c33'
+                  weight: 3
+                value_2:
+                  enabled: true
+                  color: '#342e9c'
+                  weight: 3
+                value_3:
+                  enabled: false
+                  color: '#579b17'
+                  weight: 4
+            display:
+              title: ''
+              title_position: out
+              subtitle: ''
+              data_labels: false
+              data_markers: false
+              connect_nulls: false
+              legend_position: right
+              background: ''
+              three_dimensional: 0
+              polar: 0
+              tooltips: true
+              dimensions:
+                width: ''
+                width_units: '%'
+                height: ''
+                height_units: ''
+              gauge:
+                max: '100'
+                min: '0'
+                green_from: '85'
+                green_to: '100'
+                yellow_from: '50'
+                yellow_to: '85'
+                red_from: '0'
+                red_to: '50'
+              color_changer: false
+            xaxis:
+              title: ''
+              labels_rotation: ''
+            yaxis:
+              title: ''
+              min: ''
+              max: ''
+              prefix: ''
+              suffix: ''
+              decimal_count: ''
+              labels_rotation: ''
+          series_join_by_property_name: hasc
+          series_keys_mapping_options:
+            - hasc
+            - value
+          map_data_source_settings:
+            json_file: 'https://data.cityofchicago.org/api/geospatial/k9yb-bpqx?method=export&format=GeoJSON'
+            vid: ''
+          popup: false
+          popup_content: null
+      row:
+        type: fields
+      query:
+        type: views_csv_source_query
+        options:
+          csv_file: 'internal:/sites/default/files/chicago-crime-statistics.csv'
+          headers: ''
+          header_index: 0
+          request_method: get
+          request_body: ''
+          show_errors: true
+      relationships: {  }
+      use_ajax: true
+      header: {  }
+      footer: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+      tags: {  }
+  block_2:
+    id: block_2
+    display_title: Map
+    display_plugin: block
+    position: 1
+    display_options:
+      fields:
+        value:
+          id: value
+          table: csv
+          field: value
+          relationship: none
+          group_type: count
+          admin_label: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: views_csv_source_field
+          label: 'Number of Crimes'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          key: 'Case Number'
+          trusted_html: false
+        value_3:
+          id: value_3
+          table: csv
+          field: value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_csv_source_field
+          label: Ward
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ value_3.__toString }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          key: Ward
+          trusted_html: false
+      arguments:
+        value:
+          id: value
+          table: csv
+          field: value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_csv_source_argument
+          default_action: 'not found'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          glossary: false
+          limit: 0
+          case: none
+          path_case: none
+          transform_dash: false
+          break_phrase: false
+          key: 'Primary Type'
+      style:
+        type: chart_highmap
+        options:
+          grouping: {  }
+          chart_settings:
+            library: highmap
+            type: map
+            fields:
+              label: value_3
+              stacking: false
+              data_providers:
+                value:
+                  enabled: true
+                  color: '#006fb0'
+                  weight: 3
+                value_3:
+                  enabled: false
+                  color: '#579b17'
+                  weight: 4
+            display:
+              title: ''
+              title_position: out
+              subtitle: ''
+              data_labels: true
+              data_markers: false
+              connect_nulls: false
+              legend_position: right
+              background: ''
+              three_dimensional: 0
+              polar: 0
+              tooltips: true
+              dimensions:
+                width: '400'
+                width_units: px
+                height: '400'
+                height_units: px
+              gauge:
+                max: '100'
+                min: '0'
+                green_from: '85'
+                green_to: '100'
+                yellow_from: '50'
+                yellow_to: '85'
+                red_from: '0'
+                red_to: '50'
+              color_changer: false
+            xaxis:
+              title: ''
+              labels_rotation: ''
+            yaxis:
+              title: ''
+              min: ''
+              max: ''
+              prefix: ''
+              suffix: ''
+              decimal_count: ''
+              labels_rotation: ''
+          series_join_by_property_name: 'ward,name'
+          series_keys_mapping_options:
+            - name
+            - value
+          map_data_source_settings:
+            json_file: 'https://data.cityofchicago.org/api/geospatial/k9yb-bpqx?method=export&format=GeoJSON'
+            vid: ''
+          popup: false
+          popup_content: null
+      row:
+        type: fields
+        options: {  }
+      defaults:
+        group_by: false
+        style: false
+        row: false
+        fields: false
+        arguments: false
+      group_by: true
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+      tags: {  }
+  page_2:
+    id: page_2
+    display_title: Grid
+    display_plugin: page
+    position: 2
+    display_options:
+      fields:
+        value:
+          id: value
+          table: csv
+          field: value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_csv_source_field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h3
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          key: 'Primary Type'
+          trusted_html: false
+        view_lazy_loaded:
+          id: view_lazy_loaded
+          table: views
+          field: view_lazy_loaded
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: view_lazy_loaded
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view: chicago_crimes
+          display: block_2
+          arguments: '{{ fields.value }}'
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: grid_responsive
+        options:
+          grouping: {  }
+          columns: 3
+          cell_min_width: 100
+          grid_gutter: 10
+          alignment: horizontal
+      row:
+        type: fields
+        options: {  }
+      defaults:
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        fields: false
+      group_by: true
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: chicago-crime-small-multiples
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+      tags: {  }
